@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './App.css';
+import ISSContext from './context/ISSContext';
 
 function App() {
+  const { name } = useContext(ISSContext);
   return (
-    <span>Hello, App!</span>
+    <span>{`Hello, ${name}!`}</span>
   );
 }
 
