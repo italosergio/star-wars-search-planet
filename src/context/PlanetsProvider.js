@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import PlanetsContext from './PlanetsContext';
 
-function ISSProvider({ children }) {
+function PlanetsProvider({ children }) {
   const [planets, setPlanets] = useState([]);
 
   const urlApi = 'https://swapi-trybe.herokuapp.com/api/planets';
@@ -21,8 +21,8 @@ function ISSProvider({ children }) {
   );
 }
 
-// ISSProvider.propTypes = {
-//   children: PropTypes.objectOf(PropTypes.string).isRequired,
-// };
+PlanetsProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
-export default ISSProvider;
+export default PlanetsProvider;
