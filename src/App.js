@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <h1>STAR WARS</h1>
-      <h4>PLANET SEARCH</h4>
+      <h4>Planet Search</h4>
 
       {planets.map((planet) => (
         <li key={ planet.name }>{planet.name}</li>
