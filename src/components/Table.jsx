@@ -28,7 +28,7 @@ function Table() {
         </tr>
       </thead>
       {planets.map((planet) => (
-        <tbody key={ planet.name }q>
+        <tbody key={ planet.name }>
           <tr>
             <td key={ planet.name }>{planet.name}</td>
             <td key={ planet.rotation_period }>{planet.rotation_period}</td>
