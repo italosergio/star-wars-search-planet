@@ -3,9 +3,9 @@ import './App.css';
 import ISSContext from './context/ISSContext';
 
 function App() {
-  const { name } = useContext(ISSContext);
+  const { planets } = useContext(ISSContext);
   return (
-    <span>{`Hello, ${name}!`}</span>
+    planets.map((planet) => (<li key={ planets.name }>{planet.name}</li>))
   );
 }
 
