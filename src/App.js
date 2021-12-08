@@ -5,7 +5,14 @@ import ISSContext from './context/ISSContext';
 function App() {
   const { planets } = useContext(ISSContext);
   return (
-    planets.map((planet) => (<li key={ planets.name }>{planet.name}</li>))
+    <>
+      <h1>STAR WARS</h1>
+      <h4>PLANET SEARCH</h4>
+
+      {planets.map((planet) => (
+        <li key={ planet.name }>{planet.name}</li>
+      ))}
+    </>
   );
 }
 
