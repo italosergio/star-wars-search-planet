@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import './App.css';
-import ISSContext from './context/ISSContext';
+import PlanetsContext from './context/PlanetsContext';
 
 function App() {
-  const { planets } = useContext(ISSContext);
+  const { planets } = useContext(PlanetsContext);
   return (
     <>
       <h1>STAR WARS</h1>

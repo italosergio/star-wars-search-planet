@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ISSProvider from './context/ISSProvider';
+import PlanetsProvider from './context/PlanetsProvider';
 import App from './App';
 
 ReactDOM.render(
-  <ISSProvider>
+  <PlanetsProvider>
     <App />
-  </ISSProvider>,
+  </PlanetsProvider>,
   document.getElementById('root'),
 );

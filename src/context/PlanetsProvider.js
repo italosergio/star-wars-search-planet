@@ -1,6 +1,6 @@
 // import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
-import ISSContext from './ISSContext';
+import PlanetsContext from './PlanetsContext';
 
 function ISSProvider({ children }) {
   const [planets, setPlanets] = useState([]);
@@ -15,9 +15,9 @@ function ISSProvider({ children }) {
   }, []);
 
   return (
-    <ISSContext.Provider value={ { planets } }>
+    <PlanetsContext.Provider value={ { planets } }>
       {children}
-    </ISSContext.Provider>
+    </PlanetsContext.Provider>
   );
 }
 
