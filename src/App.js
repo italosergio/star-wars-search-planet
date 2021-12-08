@@ -1,18 +1,15 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './App.css';
-import PlanetsContext from './context/PlanetsContext';
+import PlanetsProvider from './context/PlanetsProvider';
+import Table from './components/Table';
 
 function App() {
-  const { planets } = useContext(PlanetsContext);
   return (
-    <>
+    <PlanetsProvider>
       <h1>STAR WARS</h1>
       <h4>Planet Search</h4>
-
-      {planets.map((planet) => (
-        <li key={ planet.name }>{planet.name}</li>
-      ))}
-    </>
+      <Table />
+    </PlanetsProvider>
   );
 }
 

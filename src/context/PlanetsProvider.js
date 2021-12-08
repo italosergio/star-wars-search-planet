@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import PlanetsContext from './PlanetsContext';
 
