@@ -77,13 +77,10 @@ export default function SearchPlanet() {
             <i className="search icon" />
           </button>
         </div>
-        <div className="ui left pointing label">
+        <div className="ui left large pointing label">
           Filtro Quantitativo
         </div>
       </label>
-
-      <br />
-      <br />
     </section>
   );
 }
