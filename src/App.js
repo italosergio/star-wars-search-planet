@@ -7,10 +7,17 @@ import SearchPlanet from './components/SearchPlanet';
 function App() {
   return (
     <PlanetsProvider>
-      <h1>STAR WARS</h1>
-      <h4>Planet Search</h4>
+
+      <h1 className="ui center aligned icon header">
+        <i className="circular fighter jet icon" />
+        Star Wars
+        <div className="sub header">Planet Search</div>
+      </h1>
+
       <SearchPlanet />
+
       <Table />
+
     </PlanetsProvider>
   );
 }
