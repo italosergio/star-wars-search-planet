@@ -16,7 +16,7 @@ export default function SearchPlanet() {
   return (
     <section>
       <label htmlFor="name-search">
-        <div className="ui action input">
+        <div className="ui input">
           <input
             id="name-search"
             type="text"
@@ -25,9 +25,9 @@ export default function SearchPlanet() {
             value={ searchPlanetName }
             onChange={ ({ target: { value } }) => setSearchPlanetName(value) }
           />
-          <div className="ui left pointing label">
-            Filtro Nome do Planeta
-          </div>
+        </div>
+        <div className="ui left pointing label">
+          Filtro Nome do Planeta
         </div>
       </label>
 
@@ -76,9 +76,9 @@ export default function SearchPlanet() {
           >
             <i className="search icon" />
           </button>
-          <div className="ui left pointing label">
-            Filtro Quantitativo
-          </div>
+        </div>
+        <div className="ui left pointing label">
+          Filtro Quantitativo
         </div>
       </label>
 
