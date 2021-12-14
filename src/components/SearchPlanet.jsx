@@ -16,52 +16,70 @@ export default function SearchPlanet() {
   return (
     <section>
       <label htmlFor="name-search">
-        Buscar por nome:
-        <input
-          id="name-search"
-          type="text"
-          placeholder="Nome do planeta"
-          data-testid="name-filter"
-          value={ searchPlanetName }
-          onChange={ ({ target: { value } }) => setSearchPlanetName(value) }
-        />
+        <div className="ui action input">
+          <input
+            id="name-search"
+            type="text"
+            placeholder="Digite aqui..."
+            data-testid="name-filter"
+            value={ searchPlanetName }
+            onChange={ ({ target: { value } }) => setSearchPlanetName(value) }
+          />
+          <div className="ui left pointing label">
+            Filtro Nome do Planeta
+          </div>
+        </div>
       </label>
 
       <br />
+      <br />
 
       <label htmlFor="value-filter">
-        Buscar por:
-        <select data-testid="column-filter" id="column-filter">
-          <option>population</option>
-          <option>orbital_period</option>
-          <option>diameter</option>
-          <option>rotation_period</option>
-          <option>surface_water</option>
-        </select>
+        <div className="ui input">
+          <select
+            className="ui dropdown"
+            data-testid="column-filter"
+            id="column-filter"
+          >
+            <option>population</option>
+            <option>orbital_period</option>
+            <option>diameter</option>
+            <option>rotation_period</option>
+            <option>surface_water</option>
+          </select>
 
-        <select data-testid="comparison-filter" id="comparison-filter">
-          <option>maior que</option>
-          <option>igual a</option>
-          <option>menor que</option>
-        </select>
+          <select
+            className="ui dropdown"
+            data-testid="comparison-filter"
+            id="comparison-filter"
+          >
+            <option>maior que</option>
+            <option>igual a</option>
+            <option>menor que</option>
+          </select>
 
-        <input
-          data-testid="value-filter"
-          id="value-filter"
-          type="number"
-          value={ filterByNumericValues.value }
-          onChange={ ({ target: { value } }) => setFilterByNumericValues((prevState) => (
-            { ...prevState, value }
-          )) }
-        />
+          <input
+            data-testid="value-filter"
+            id="value-filter"
+            type="number"
+            value={ filterByNumericValues.value }
+            onChange={ ({ target: { value } }) => setFilterByNumericValues(
+              (prevState) => ({ ...prevState, value }),
+            ) }
+          />
 
-        <button
-          type="button"
-          data-testid="button-filter"
-          onSubmit={ onSubmit }
-        >
-          Seach
-        </button>
+          <button
+            type="button"
+            data-testid="button-filter"
+            onSubmit={ onSubmit }
+            className="ui icon button"
+          >
+            <i className="search icon" />
+          </button>
+          <div className="ui left pointing label">
+            Filtro Quantitativo
+          </div>
+        </div>
       </label>
 
       <br />

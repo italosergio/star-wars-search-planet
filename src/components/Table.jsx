@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import PlanetsContext from '../context/PlanetsContext';
 
 function Table() {
-  const { planets, searchPlanetName, filterByNumericValues } = useContext(PlanetsContext);
+  const { planets, searchPlanetName } = useContext(PlanetsContext);
   const heads = [
     'Name',
     'Rotation Period (h)',
@@ -63,7 +63,9 @@ function Table() {
         // FILTRO POR NUMERO DE HABITANTES
           // .filter((planet) => planet.population >= search)
           // .filter((planet) => {
-          //   if()
+          //   if (filterByNumericValues.comparation === 'maior que') {
+          //     return (planet[filterByNumericValues.column] >= (filterByNumericValues.value));
+          //   }
           // })
           .map((planet) => (
             <tbody key={ planet.name }>
