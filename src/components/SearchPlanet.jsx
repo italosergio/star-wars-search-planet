@@ -8,6 +8,7 @@ export default function SearchPlanet() {
     setFilterByNumericValues,
     filterByNumericValues,
     setNumFilterOn,
+    numFilterOn,
   } = useContext(PlanetsContext);
 
   return (
@@ -42,7 +43,8 @@ export default function SearchPlanet() {
               (prevState) => ({ ...prevState, column: value }),
             ) }
           >
-            <option>population</option>
+            {(!numFilterOn && filterByNumericValues.column === 'population')
+            && <option>population</option>}
             <option>orbital_period</option>
             <option>diameter</option>
             <option>rotation_period</option>
