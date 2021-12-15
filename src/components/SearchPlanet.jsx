@@ -75,19 +75,41 @@ export default function SearchPlanet() {
             ) }
           />
 
-          <button
-            type="button"
-            data-testid="button-filter"
-            onClick={ () => setNumFilterOn(true) }
-            className="ui icon button"
-          >
-            <i className="search icon" />
-          </button>
+          {!numFilterOn && (
+            <button
+              type="button"
+              data-testid="button-filter"
+              onClick={ () => setNumFilterOn(true) }
+              className="ui black icon button"
+            >
+              <i className="inverted search icon" />
+            </button>)}
+
+          {numFilterOn && (
+            <button
+              type="button"
+              onClick={ () => setNumFilterOn(false) }
+              className="ui black icon button"
+            >
+              <i className="inverted close icon" />
+            </button>)}
         </div>
         <div className="ui large left pointing label">
           Filtro Quantitativo
         </div>
       </label>
+      <br />
+      <br />
+      {numFilterOn && (
+        <a
+          href="/"
+          className="ui black tag label"
+        >
+          {`${filterByNumericValues.column} 
+        ${filterByNumericValues.comparison} 
+        ${filterByNumericValues.value}`}
+
+        </a>)}
     </section>
   );
 }
