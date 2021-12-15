@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import PlanetsContext from '../context/PlanetsContext';
 import Loading from './Loading';
+import NextPrev from './NextPrev';
 
 function Table() {
   const {
@@ -9,8 +10,6 @@ function Table() {
     filterByNumericValues,
     numFilterOn,
     tableLoading,
-    setPage,
-    page,
   } = useContext(PlanetsContext);
 
   const heads = [
@@ -51,35 +50,7 @@ function Table() {
     tableLoading ? (<Loading />)
       : (
         <div>
-          <div className="ui mini black buttons">
-            <button
-              type="button"
-              className="ui labeled icon button"
-              onClick={ () => {
-                const MIN_PAG = 1;
-                if (Number(page) > MIN_PAG) {
-                  setPage((prevState) => String(Number(prevState) - 1));
-                }
-              } }
-
-            >
-              <i className="left chevron icon" />
-              Prev
-            </button>
-            <button
-              type="button"
-              className="ui right labeled icon button"
-              onClick={ () => {
-                const MAX_PAG = 6;
-                if (Number(page) < MAX_PAG) {
-                  setPage((prevState) => String(Number(prevState) + 1));
-                }
-              } }
-            >
-              Next
-              <i className="right chevron icon" />
-            </button>
-          </div>
+          <NextPrev />
           <table className="ui selectable inverted table">
             <thead>
               <tr>
