@@ -10,6 +10,7 @@ function PlanetsProvider({ children }) {
     comparison: 'maior que',
     value: '0',
   });
+  const [numFilterOn, setNumFilterOn] = useState(false);
 
   const urlApi = 'https://swapi-trybe.herokuapp.com/api/planets';
   useEffect(() => {
@@ -28,6 +29,8 @@ function PlanetsProvider({ children }) {
         setSearchPlanetName,
         filterByNumericValues,
         setFilterByNumericValues,
+        numFilterOn,
+        setNumFilterOn,
       } }
     >
       {children}

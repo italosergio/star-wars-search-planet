@@ -2,7 +2,13 @@ import React, { useContext } from 'react';
 import PlanetsContext from '../context/PlanetsContext';
 
 function Table() {
-  const { planets, searchPlanetName } = useContext(PlanetsContext);
+  const {
+    planets,
+    searchPlanetName,
+    filterByNumericValues,
+    numFilterOn,
+  } = useContext(PlanetsContext);
+
   const heads = [
     'Name',
     'Rotation Period (h)',
@@ -47,20 +53,50 @@ function Table() {
             </th>))}
         </tr>
       </thead>
-      { planets
-        // FILTRO POR NOME DO PLANETA
-        .filter((planet) => (
-          searchPlanetName
-            ? planet.name.includes(searchPlanetName)
-            : true))
+      { numFilterOn
         // FILTRO POR NUMERO DE HABITANTES
-        .map((planet) => (
-          <tbody key={ planet.name }>
-            <tr>
-              { tableList(planet) }
-            </tr>
-          </tbody>
-        ))}
+        ? (
+          planets
+            .filter(
+              (planet) => {
+                switch (filterByNumericValues.comparison) {
+                case 'maior que':
+                  return Number(planet[filterByNumericValues.column])
+          > Number(filterByNumericValues.value);
+
+                case 'menor que':
+                  return Number(planet[filterByNumericValues.column])
+          < Number(filterByNumericValues.value);
+
+                case 'igual a':
+                  return Number(planet[filterByNumericValues.column])
+          === Number(filterByNumericValues.value);
+
+                default:
+                  return undefined;
+                }
+              },
+            )
+            .map((planet) => (
+              <tbody key={ planet.name }>
+                <tr>
+                  { tableList(planet) }
+                </tr>
+              </tbody>
+            )))
+        : planets
+        // FILTRO POR NOME DO PLANETA
+          .filter((planet) => (
+            searchPlanetName
+              ? planet.name.includes(searchPlanetName)
+              : true))
+          .map((planet) => (
+            <tbody key={ planet.name }>
+              <tr>
+                { tableList(planet) }
+              </tr>
+            </tbody>
+          ))}
     </table>
   );
 }

@@ -7,11 +7,8 @@ export default function SearchPlanet() {
     searchPlanetName,
     setFilterByNumericValues,
     filterByNumericValues,
+    setNumFilterOn,
   } = useContext(PlanetsContext);
-
-  const onSubmit = () => {
-
-  };
 
   return (
     <section>
@@ -26,7 +23,7 @@ export default function SearchPlanet() {
             onChange={ ({ target: { value } }) => setSearchPlanetName(value) }
           />
         </div>
-        <div className="ui left pointing label">
+        <div className="ui large left pointing label">
           Filtro Nome do Planeta
         </div>
       </label>
@@ -40,6 +37,10 @@ export default function SearchPlanet() {
             className="ui dropdown"
             data-testid="column-filter"
             id="column-filter"
+            value={ filterByNumericValues.column }
+            onChange={ ({ target: { value } }) => setFilterByNumericValues(
+              (prevState) => ({ ...prevState, column: value }),
+            ) }
           >
             <option>population</option>
             <option>orbital_period</option>
@@ -52,6 +53,10 @@ export default function SearchPlanet() {
             className="ui dropdown"
             data-testid="comparison-filter"
             id="comparison-filter"
+            value={ filterByNumericValues.comparison }
+            onChange={ ({ target: { value } }) => setFilterByNumericValues(
+              (prevState) => ({ ...prevState, comparison: value }),
+            ) }
           >
             <option>maior que</option>
             <option>igual a</option>
@@ -71,13 +76,13 @@ export default function SearchPlanet() {
           <button
             type="button"
             data-testid="button-filter"
-            onSubmit={ onSubmit }
+            onClick={ () => setNumFilterOn(true) }
             className="ui icon button"
           >
             <i className="search icon" />
           </button>
         </div>
-        <div className="ui left large pointing label">
+        <div className="ui large left pointing label">
           Filtro Quantitativo
         </div>
       </label>
