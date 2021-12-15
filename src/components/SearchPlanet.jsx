@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import PlanetsContext from '../context/PlanetsContext';
+import PlanetContext from '../context/PlanetsContext';
 
 export default function SearchPlanet() {
   const {
@@ -9,7 +9,8 @@ export default function SearchPlanet() {
     filterByNumericValues,
     setNumFilterOn,
     numFilterOn,
-  } = useContext(PlanetsContext);
+    setTableLoading,
+  } = useContext(PlanetContext);
 
   return (
     <section>
@@ -69,6 +70,7 @@ export default function SearchPlanet() {
             data-testid="value-filter"
             id="value-filter"
             type="number"
+            className="ui black input"
             value={ filterByNumericValues.value }
             onChange={ ({ target: { value } }) => setFilterByNumericValues(
               (prevState) => ({ ...prevState, value }),
@@ -79,19 +81,29 @@ export default function SearchPlanet() {
             <button
               type="button"
               data-testid="button-filter"
-              onClick={ () => setNumFilterOn(true) }
+              onClick={ () => {
+                setTableLoading(true);
+                setNumFilterOn(true);
+                const ONE_SEC = 1000;
+                setInterval(() => setTableLoading(false), ONE_SEC);
+              } }
               className="ui black icon button"
             >
-              <i className="inverted search icon" />
+              <i className="toggle off icon" />
             </button>)}
 
           {numFilterOn && (
             <button
               type="button"
-              onClick={ () => setNumFilterOn(false) }
+              onClick={ () => {
+                setTableLoading(true);
+                setNumFilterOn(false);
+                const ONE_SEC = 1000;
+                setInterval(() => setTableLoading(false), ONE_SEC);
+              } }
               className="ui black icon button"
             >
-              <i className="inverted close icon" />
+              <i className="toggle on icon" />
             </button>)}
         </div>
         <div className="ui large left pointing label">

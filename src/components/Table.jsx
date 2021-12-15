@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import PlanetsContext from '../context/PlanetsContext';
+import Loading from './Loading';
 
 function Table() {
   const {
@@ -7,6 +8,7 @@ function Table() {
     searchPlanetName,
     filterByNumericValues,
     numFilterOn,
+    tableLoading,
   } = useContext(PlanetsContext);
 
   const heads = [
@@ -44,61 +46,63 @@ function Table() {
   }
 
   return (
-    <table className="ui selectable inverted table">
-      <thead>
-        <tr>
-          { heads.map((title) => (
-            <th key={ title } className="center aligned">
-              { title }
-            </th>))}
-        </tr>
-      </thead>
-      { numFilterOn
-        // FILTRO POR NUMERO DE HABITANTES
-        ? (
-          planets
-            .filter(
-              (planet) => {
-                switch (filterByNumericValues.comparison) {
-                case 'maior que':
-                  return Number(planet[filterByNumericValues.column])
+    tableLoading ? (<Loading />)
+      : (
+        <table className="ui selectable inverted table">
+          <thead>
+            <tr>
+              { heads.map((title) => (
+                <th key={ title } className="center aligned">
+                  { title }
+                </th>))}
+            </tr>
+          </thead>
+          { numFilterOn
+          // FILTRO POR NUMERO DE HABITANTES
+            ? (
+              planets
+                .filter(
+                  (planet) => {
+                    switch (filterByNumericValues.comparison) {
+                    case 'maior que':
+                      return Number(planet[filterByNumericValues.column])
           > Number(filterByNumericValues.value);
 
-                case 'menor que':
-                  return Number(planet[filterByNumericValues.column])
+                    case 'menor que':
+                      return Number(planet[filterByNumericValues.column])
           < Number(filterByNumericValues.value);
 
-                case 'igual a':
-                  return Number(planet[filterByNumericValues.column])
+                    case 'igual a':
+                      return Number(planet[filterByNumericValues.column])
           === Number(filterByNumericValues.value);
 
-                default:
-                  return undefined;
-                }
-              },
-            )
-            .map((planet) => (
-              <tbody key={ planet.name }>
-                <tr>
-                  { tableList(planet) }
-                </tr>
-              </tbody>
-            )))
-        : planets
-        // FILTRO POR NOME DO PLANETA
-          .filter((planet) => (
-            searchPlanetName
-              ? planet.name.includes(searchPlanetName)
-              : true))
-          .map((planet) => (
-            <tbody key={ planet.name }>
-              <tr>
-                { tableList(planet) }
-              </tr>
-            </tbody>
-          ))}
-    </table>
-  );
+                    default:
+                      return undefined;
+                    }
+                  },
+                )
+                .map((planet) => (
+                  <tbody key={ planet.name }>
+                    <tr>
+                      { tableList(planet) }
+                    </tr>
+                  </tbody>
+                )))
+            : planets
+            // FILTRO POR NOME DO PLANETA
+              .filter((planet) => (
+                searchPlanetName
+                  ? planet.name.includes(searchPlanetName)
+                  : true))
+              .map((planet) => (
+                <tbody key={ planet.name }>
+                  <tr>
+                    { tableList(planet) }
+                  </tr>
+                </tbody>
+              ))}
+        </table>
+      ));
 }
 
 export default Table;
