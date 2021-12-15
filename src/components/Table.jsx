@@ -9,6 +9,8 @@ function Table() {
     filterByNumericValues,
     numFilterOn,
     tableLoading,
+    setPage,
+    page,
   } = useContext(PlanetsContext);
 
   const heads = [
@@ -48,60 +50,91 @@ function Table() {
   return (
     tableLoading ? (<Loading />)
       : (
-        <table className="ui selectable inverted table">
-          <thead>
-            <tr>
-              { heads.map((title) => (
-                <th key={ title } className="center aligned">
-                  { title }
-                </th>))}
-            </tr>
-          </thead>
-          { numFilterOn
-          // FILTRO POR NUMERO DE HABITANTES
-            ? (
-              planets
-                .filter(
-                  (planet) => {
-                    switch (filterByNumericValues.comparison) {
-                    case 'maior que':
-                      return Number(planet[filterByNumericValues.column])
+        <div>
+          <div className="ui mini black buttons">
+            <button
+              type="button"
+              className="ui labeled icon button"
+              onClick={ () => {
+                const MIN_PAG = 1;
+                if (Number(page) > MIN_PAG) {
+                  setPage((prevState) => String(Number(prevState) - 1));
+                }
+              } }
+
+            >
+              <i className="left chevron icon" />
+              Prev
+            </button>
+            <button
+              type="button"
+              className="ui right labeled icon button"
+              onClick={ () => {
+                const MAX_PAG = 6;
+                if (Number(page) < MAX_PAG) {
+                  setPage((prevState) => String(Number(prevState) + 1));
+                }
+              } }
+            >
+              Next
+              <i className="right chevron icon" />
+            </button>
+          </div>
+          <table className="ui selectable inverted table">
+            <thead>
+              <tr>
+                { heads.map((title) => (
+                  <th key={ title } className="center aligned">
+                    { title }
+                  </th>))}
+              </tr>
+            </thead>
+            { numFilterOn
+            // FILTRO POR NUMERO DE HABITANTES
+              ? (
+                planets
+                  .filter(
+                    (planet) => {
+                      switch (filterByNumericValues.comparison) {
+                      case 'maior que':
+                        return Number(planet[filterByNumericValues.column])
           > Number(filterByNumericValues.value);
 
-                    case 'menor que':
-                      return Number(planet[filterByNumericValues.column])
+                      case 'menor que':
+                        return Number(planet[filterByNumericValues.column])
           < Number(filterByNumericValues.value);
 
-                    case 'igual a':
-                      return Number(planet[filterByNumericValues.column])
+                      case 'igual a':
+                        return Number(planet[filterByNumericValues.column])
           === Number(filterByNumericValues.value);
 
-                    default:
-                      return undefined;
-                    }
-                  },
-                )
+                      default:
+                        return undefined;
+                      }
+                    },
+                  )
+                  .map((planet) => (
+                    <tbody key={ planet.name }>
+                      <tr>
+                        { tableList(planet) }
+                      </tr>
+                    </tbody>
+                  )))
+              : planets
+              // FILTRO POR NOME DO PLANETA
+                .filter((planet) => (
+                  searchPlanetName
+                    ? planet.name.includes(searchPlanetName)
+                    : true))
                 .map((planet) => (
                   <tbody key={ planet.name }>
                     <tr>
                       { tableList(planet) }
                     </tr>
                   </tbody>
-                )))
-            : planets
-            // FILTRO POR NOME DO PLANETA
-              .filter((planet) => (
-                searchPlanetName
-                  ? planet.name.includes(searchPlanetName)
-                  : true))
-              .map((planet) => (
-                <tbody key={ planet.name }>
-                  <tr>
-                    { tableList(planet) }
-                  </tr>
-                </tbody>
-              ))}
-        </table>
+                ))}
+          </table>
+        </div>
       ));
 }
 

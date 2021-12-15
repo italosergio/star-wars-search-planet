@@ -113,15 +113,20 @@ export default function SearchPlanet() {
       <br />
       <br />
       {numFilterOn && (
-        <a
-          href="/"
-          className="ui black tag label"
-        >
-          {`${filterByNumericValues.column} 
+        <div>
+          <a
+            href="/"
+            className="ui black tag label"
+          >
+            {`${filterByNumericValues.column} 
         ${filterByNumericValues.comparison} 
         ${filterByNumericValues.value}`}
 
-        </a>)}
+          </a>
+          <br />
+          <br />
+        </div>
+      )}
     </section>
   );
 }
