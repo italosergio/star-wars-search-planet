@@ -2,6 +2,10 @@ body {
   background-image: url('https://www.pixelstalk.net/wp-content/uploads/2016/06/Star-Wars-Wallpaper-HD.jpg');
 }
 
+.h1 {
+  font-family: sans-serif;
+}
+
 .ui.table {
   margin: auto;
 }
@@ -9,17 +13,17 @@ body {
 @media ( prefers-reduced-motion : no-preference ) {
 
   .rotate-icon {
-    animation: rotate-icon-spin infinite 5s alternate-reverse;
+    animation: rotate-icon-spin infinite 20s alternate;
   }
 }
 
 @keyframes rotate-icon-spin {
 
   from {
-    transform: rotate(0deg);
+    transform: rotate(180deg);
   }
 
   to {
-    transform: rotate(180deg);
+    transform: rotate(360deg);
   }
 }

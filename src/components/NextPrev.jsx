@@ -8,7 +8,7 @@ export default function NextPrev() {
   } = useContext(PlanetsContext);
 
   return (
-    <div className="ui mini black buttons">
+    <div className="ui mini inverted black buttons">
       <button
         type="button"
         className="ui labeled icon button"

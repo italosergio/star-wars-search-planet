@@ -17,6 +17,7 @@ export default function SearchPlanet() {
       <label htmlFor="name-search">
         <div className="ui input">
           <input
+            disabled={ numFilterOn }
             id="name-search"
             type="text"
             placeholder="Digite aqui..."
@@ -25,7 +26,7 @@ export default function SearchPlanet() {
             onChange={ ({ target: { value } }) => setSearchPlanetName(value) }
           />
         </div>
-        <div className="ui large left pointing label">
+        <div className="ui large left pointing label black shake">
           Filtro Nome do Planeta
         </div>
       </label>
@@ -106,7 +107,7 @@ export default function SearchPlanet() {
               <i className="toggle on icon" />
             </button>)}
         </div>
-        <div className="ui large left pointing label">
+        <div className="ui large left pointing label black shake">
           Filtro Quantitativo
         </div>
       </label>
