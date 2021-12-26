@@ -60,10 +60,11 @@ function Table() {
                   </th>))}
               </tr>
             </thead>
+
             { numFilterOn
-            // FILTRO POR NUMERO DE HABITANTES
               ? (
                 planets
+                // FILTRO NUMERICO
                   .filter(
                     (planet) => {
                       switch (filterByNumericValues.comparison) {
@@ -95,7 +96,7 @@ function Table() {
               // FILTRO POR NOME DO PLANETA
                 .filter((planet) => (
                   searchPlanetName
-                    ? planet.name.includes(searchPlanetName)
+                    ? planet.name.toLowerCase().includes(searchPlanetName)
                     : true))
                 .map((planet) => (
                   <tbody key={ planet.name }>
