@@ -31,7 +31,7 @@ function Table() {
   function tableList(planet) {
     const array = Object.keys(planet);
     const ret = array.map((element) => {
-      if (element === 'films') {
+      if (element === 'residents') {
         return null;
       }
       return (

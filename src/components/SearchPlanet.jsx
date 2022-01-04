@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import PlanetContext from '../context/PlanetsContext';
 
 export default function SearchPlanet() {
@@ -11,6 +11,16 @@ export default function SearchPlanet() {
     numFilterOn,
     setTableLoading,
   } = useContext(PlanetContext);
+
+  const [atributte] = useState([
+    'population',
+    'orbital_period',
+    'diameter',
+    'rotation_period',
+    'surface_water',
+  ]);
+
+  const [saveFilterCollumn, setSaveFilterCollumn] = useState('');
 
   return (
     <section>
@@ -45,12 +55,12 @@ export default function SearchPlanet() {
               (prevState) => ({ ...prevState, column: value }),
             ) }
           >
-            {(!numFilterOn && filterByNumericValues.column === 'population')
-            && <option>population</option>}
-            <option>orbital_period</option>
-            <option>diameter</option>
-            <option>rotation_period</option>
-            <option>surface_water</option>
+            {
+              atributte.map((title) => (title !== saveFilterCollumn)
+                && (
+                  <option key={ title }>{title}</option>
+                ))
+            }
           </select>
 
           <select
@@ -85,6 +95,7 @@ export default function SearchPlanet() {
               onClick={ () => {
                 setTableLoading(true);
                 setNumFilterOn(true);
+                setSaveFilterCollumn(filterByNumericValues.column);
                 const ONE_SEC = 1000;
                 setInterval(() => setTableLoading(false), ONE_SEC);
               } }
@@ -99,6 +110,7 @@ export default function SearchPlanet() {
               onClick={ () => {
                 setTableLoading(true);
                 setNumFilterOn(false);
+                setSaveFilterCollumn('');
                 const ONE_SEC = 1000;
                 setInterval(() => setTableLoading(false), ONE_SEC);
               } }
