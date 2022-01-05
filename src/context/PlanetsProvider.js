@@ -5,15 +5,14 @@ import PlanetsContext from './PlanetsContext';
 function PlanetsProvider({ children }) {
   const [planets, setPlanets] = useState([]);
   const [searchPlanetName, setSearchPlanetName] = useState('');
+  const [numFilterOn, setNumFilterOn] = useState(false);
+  const [tableLoading, setTableLoading] = useState(true);
+  const [page, setPage] = useState('1');
   const [filterByNumericValues, setFilterByNumericValues] = useState({
     column: 'population',
     comparison: 'maior que',
     value: '0',
   });
-
-  const [numFilterOn, setNumFilterOn] = useState(false);
-  const [tableLoading, setTableLoading] = useState(true);
-  const [page, setPage] = useState('1');
 
   useEffect(() => {
     const urlApi = `https://swapi-trybe.herokuapp.com/api/planets/?page=${page}`;
@@ -27,24 +26,22 @@ function PlanetsProvider({ children }) {
     fetchApi();
   }, [page]);
 
+  const state = {
+    planets,
+    searchPlanetName,
+    setSearchPlanetName,
+    filterByNumericValues,
+    setFilterByNumericValues,
+    numFilterOn,
+    setNumFilterOn,
+    tableLoading,
+    setTableLoading,
+    setPage,
+    page,
+  };
+
   return (
-    <PlanetsContext.Provider
-      value={ {
-        planets,
-        searchPlanetName,
-        setSearchPlanetName,
-        filterByNumericValues,
-        setFilterByNumericValues,
-        numFilterOn,
-        setNumFilterOn,
-        tableLoading,
-        setTableLoading,
-        setPage,
-        page,
-      } }
-    >
-      {children}
-    </PlanetsContext.Provider>
+    <PlanetsContext.Provider value={ state }>{children}</PlanetsContext.Provider>
   );
 }
 

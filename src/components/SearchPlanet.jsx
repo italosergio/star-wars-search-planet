@@ -12,18 +12,18 @@ export default function SearchPlanet() {
     setTableLoading,
   } = useContext(PlanetContext);
 
-  const [atributte] = useState([
+  const [saveFilterCollumn, setSaveFilterCollumn] = useState('');
+
+  const atributte = [
     'population',
     'orbital_period',
     'diameter',
     'rotation_period',
     'surface_water',
-  ]);
+  ];
 
-  const [saveFilterCollumn, setSaveFilterCollumn] = useState('');
-
-  return (
-    <section>
+  function renderNameFilter() {
+    return (
       <label htmlFor="name-search">
         <div className="ui input">
           <input
@@ -39,107 +39,126 @@ export default function SearchPlanet() {
         <div className="ui large left pointing label black shake">
           Filtro Nome do Planeta
         </div>
+        <br />
+        <br />
       </label>
+    );
+  }
 
-      <br />
-      <br />
-
-      <label htmlFor="value-filter">
-        <div className="ui input">
-          <select
-            className="ui dropdown"
-            data-testid="column-filter"
-            id="column-filter"
-            value={ filterByNumericValues.column }
-            onChange={ ({ target: { value } }) => setFilterByNumericValues(
-              (prevState) => ({ ...prevState, column: value }),
-            ) }
-          >
-            {
-              atributte.map((title) => (title !== saveFilterCollumn)
+  function renderColumnFilterDropdown() {
+    return (
+      <select
+        data-testid="column-filter"
+        id="column-filter"
+        value={ filterByNumericValues.column }
+        onChange={ ({ target: { value } }) => setFilterByNumericValues(
+          (prevState) => ({ ...prevState, column: value }),
+        ) }
+      >
+        {
+          atributte.map((title) => (title !== saveFilterCollumn)
                 && (
                   <option key={ title }>{title}</option>
                 ))
-            }
-          </select>
+        }
+      </select>
+    );
+  }
 
-          <select
-            className="ui dropdown"
-            data-testid="comparison-filter"
-            id="comparison-filter"
-            value={ filterByNumericValues.comparison }
-            onChange={ ({ target: { value } }) => setFilterByNumericValues(
-              (prevState) => ({ ...prevState, comparison: value }),
-            ) }
-          >
-            <option>maior que</option>
-            <option>igual a</option>
-            <option>menor que</option>
-          </select>
+  function renderComparisonFilterSelect() {
+    return (
+      <select
+        data-testid="comparison-filter"
+        id="comparison-filter"
+        value={ filterByNumericValues.comparison }
+        onChange={ ({ target: { value } }) => setFilterByNumericValues(
+          (prevState) => ({ ...prevState, comparison: value }),
+        ) }
+      >
+        <option>maior que</option>
+        <option>igual a</option>
+        <option>menor que</option>
+      </select>
+    );
+  }
 
-          <input
-            data-testid="value-filter"
-            id="value-filter"
-            type="number"
-            className="ui black input"
-            value={ filterByNumericValues.value }
-            onChange={ ({ target: { value } }) => setFilterByNumericValues(
-              (prevState) => ({ ...prevState, value }),
-            ) }
-          />
+  function renderValueFilterInput() {
+    return (
+      <input
+        data-testid="value-filter"
+        id="value-filter"
+        type="number"
+        className="ui black input"
+        value={ filterByNumericValues.value }
+        onChange={ ({ target: { value } }) => setFilterByNumericValues(
+          (prevState) => ({ ...prevState, value }),
+        ) }
+      />
+    );
+  }
 
-          {!numFilterOn && (
-            <button
-              type="button"
-              data-testid="button-filter"
-              onClick={ () => {
-                setTableLoading(true);
-                setNumFilterOn(true);
-                setSaveFilterCollumn(filterByNumericValues.column);
-                const ONE_SEC = 1000;
-                setInterval(() => setTableLoading(false), ONE_SEC);
-              } }
-              className="ui black icon button"
-            >
-              <i className="toggle off icon" />
-            </button>)}
+  function renderFilterButton() {
+    return (
+      <button
+        type="button"
+        data-testid="button-filter"
+        onClick={ () => {
+          setTableLoading(true);
+          setNumFilterOn(!numFilterOn);
+          setSaveFilterCollumn(!numFilterOn ? filterByNumericValues.column : '');
+          const ONE_SEC = 1000;
+          setInterval(() => setTableLoading(false), ONE_SEC);
+        } }
+        className="ui black icon button"
+      >
+        <i className={ `toggle ${numFilterOn ? 'on' : 'off'} icon` } />
+      </button>
+    );
+  }
 
-          {numFilterOn && (
-            <button
-              type="button"
-              onClick={ () => {
-                setTableLoading(true);
-                setNumFilterOn(false);
-                setSaveFilterCollumn('');
-                const ONE_SEC = 1000;
-                setInterval(() => setTableLoading(false), ONE_SEC);
-              } }
-              className="ui black icon button"
-            >
-              <i className="toggle on icon" />
-            </button>)}
+  function renderNumericFilter() {
+    return (
+      <label htmlFor="value-filter">
+        <div className="ui input">
+          {renderColumnFilterDropdown()}
+          {renderComparisonFilterSelect()}
+          {renderValueFilterInput()}
+          {renderFilterButton()}
         </div>
         <div className="ui large left pointing label black shake">
           Filtro Quantitativo
         </div>
+        <br />
+        <br />
       </label>
-      <br />
-      <br />
-      {numFilterOn && (
+    );
+  }
+
+  function filterFlag() {
+    return (
+      numFilterOn && (
         <div>
           <a
             href="/"
             className="ui black tag label"
           >
             {`${filterByNumericValues.column} 
-        ${filterByNumericValues.comparison} 
-        ${filterByNumericValues.value}`}
+      ${filterByNumericValues.comparison} 
+      ${filterByNumericValues.value}`}
 
           </a>
           <br />
           <br />
         </div>
-      )}
+      )
+    );
+  }
+
+  return (
+    <section>
+      {renderNameFilter()}
+      {renderNumericFilter()}
+      {filterFlag()}
     </section>
   );
 }

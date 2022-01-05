@@ -14,7 +14,7 @@ export default function Header() {
 
   return (
     <h1 className="inverted transparent ui center aligned icon header">
-      <a href="https://github.com/italosergio" className="sub header shake" id="credits">A Trybe Project by @italosergio</a>
+      <a href="https://github.com/italosergio" className="sub header shake" id="credits">A Trybe Project by italosergio</a>
       <i className="circular fighter jet icon rotate-icon" />
       <div className="header h1 shake-little">STAR WARS</div>
       <div className="sub header shake-little">Planet Search</div>
