@@ -7,9 +7,9 @@ export default function SearchPlanet() {
     searchPlanetName,
     setFilterByNumericValues,
     filterByNumericValues,
+    loadingOneSecond,
     setNumFilterOn,
     numFilterOn,
-    setTableLoading,
     filterBackUp,
     setFilterBackUp,
   } = useContext(PlanetContext);
@@ -105,15 +105,13 @@ export default function SearchPlanet() {
         type="button"
         data-testid="button-filter"
         onClick={ () => {
-          setTableLoading(true);
+          loadingOneSecond();
           setNumFilterOn(true);
           setSaveFilterCollumn(filterByNumericValues.column);
+          setFilterBackUp((prevState) => [...prevState, filterByNumericValues]);
           setFilterByNumericValues(
             (prevState) => ({ ...prevState, column: 'population' }),
           );
-          setFilterBackUp((prevState) => [...prevState, filterByNumericValues]);
-          const ONE_SEC = 1000;
-          setInterval(() => setTableLoading(false), ONE_SEC);
         } }
         className="ui black icon button"
       >

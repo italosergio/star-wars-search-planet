@@ -29,33 +29,29 @@ function Table() {
   ];
 
   function nameFilter() {
-    return planets
-      .filter((planet) => (
-        searchPlanetName
-          ? planet.name.toLowerCase().includes(searchPlanetName)
-          : true
-      ));
+    const filtered = (planet) => planet.name.toLowerCase().includes(searchPlanetName);
+
+    return planets.filter((planet) => (
+      searchPlanetName ? filtered(planet) : true
+    ));
   }
 
   function numericFilter() {
     const filtrado = filterBackUp.reduce((acc, crr) => acc.filter((planet) => {
+      const comparasionMore = Number(planet[crr.column]) > Number(crr.value);
+      const comparasionLess = Number(planet[crr.column]) < Number(crr.value);
+      const comparasionEqual = Number(planet[crr.column]) === Number(crr.value);
+
       switch (crr.comparison) {
-      case 'maior que':
-        return Number(planet[crr.column])
-      > Number(crr.value);
-
       case 'menor que':
-        return Number(planet[crr.column])
-      < Number(crr.value);
-
+        return comparasionLess;
       case 'igual a':
-        return Number(planet[crr.column])
-      === Number(crr.value);
-
+        return comparasionEqual;
       default:
-        return undefined;
+        return comparasionMore;
       }
     }), planets);
+
     return filtrado;
   }
 

@@ -14,16 +14,19 @@ function PlanetsProvider({ children }) {
     value: '0',
   });
   const [filterBackUp, setFilterBackUp] = useState([]);
+  const loadingOneSecond = () => {
+    const ONE_SEC = 1000;
+    setTableLoading(true);
+    setInterval(() => setTableLoading(false), ONE_SEC);
+  };
 
   useEffect(() => {
     const urlApi = `https://swapi-trybe.herokuapp.com/api/planets/?page=${page}`;
-    setTableLoading(true);
+    loadingOneSecond();
     const fetchApi = async () => {
       const { results } = await fetch(urlApi).then((response) => response.json());
       setPlanets(results);
     };
-    const ONE_SEC = 1000;
-    setInterval(() => setTableLoading(false), ONE_SEC);
     fetchApi();
   }, [page]);
 
@@ -37,6 +40,7 @@ function PlanetsProvider({ children }) {
     setNumFilterOn,
     tableLoading,
     setTableLoading,
+    loadingOneSecond,
     setPage,
     page,
     filterBackUp,
