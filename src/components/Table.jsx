@@ -7,9 +7,9 @@ function Table() {
   const {
     planets,
     searchPlanetName,
-    filterByNumericValues,
     numFilterOn,
     tableLoading,
+    filterBackUp,
   } = useContext(PlanetsContext);
 
   const tableHeads = [
@@ -38,27 +38,25 @@ function Table() {
   }
 
   function numericFilter() {
-    return planets
-      .filter(
-        (planet) => {
-          switch (filterByNumericValues.comparison) {
-          case 'maior que':
-            return Number(planet[filterByNumericValues.column])
-          > Number(filterByNumericValues.value);
+    const filtrado = filterBackUp.reduce((acc, crr) => acc.filter((planet) => {
+      switch (crr.comparison) {
+      case 'maior que':
+        return Number(planet[crr.column])
+      > Number(crr.value);
 
-          case 'menor que':
-            return Number(planet[filterByNumericValues.column])
-          < Number(filterByNumericValues.value);
+      case 'menor que':
+        return Number(planet[crr.column])
+      < Number(crr.value);
 
-          case 'igual a':
-            return Number(planet[filterByNumericValues.column])
-          === Number(filterByNumericValues.value);
+      case 'igual a':
+        return Number(planet[crr.column])
+      === Number(crr.value);
 
-          default:
-            return undefined;
-          }
-        },
-      );
+      default:
+        return undefined;
+      }
+    }), planets);
+    return filtrado;
   }
 
   function tableHead() {

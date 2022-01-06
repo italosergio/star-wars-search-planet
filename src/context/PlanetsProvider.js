@@ -13,6 +13,7 @@ function PlanetsProvider({ children }) {
     comparison: 'maior que',
     value: '0',
   });
+  const [filterBackUp, setFilterBackUp] = useState([]);
 
   useEffect(() => {
     const urlApi = `https://swapi-trybe.herokuapp.com/api/planets/?page=${page}`;
@@ -38,6 +39,8 @@ function PlanetsProvider({ children }) {
     setTableLoading,
     setPage,
     page,
+    filterBackUp,
+    setFilterBackUp,
   };
 
   return (

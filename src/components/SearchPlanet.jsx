@@ -10,6 +10,8 @@ export default function SearchPlanet() {
     setNumFilterOn,
     numFilterOn,
     setTableLoading,
+    filterBackUp,
+    setFilterBackUp,
   } = useContext(PlanetContext);
 
   const [saveFilterCollumn, setSaveFilterCollumn] = useState('');
@@ -27,7 +29,7 @@ export default function SearchPlanet() {
       <label htmlFor="name-search">
         <div className="ui input">
           <input
-            disabled={ numFilterOn }
+            disabled={ filterBackUp.length }
             id="name-search"
             type="text"
             placeholder="Digite aqui..."
@@ -97,21 +99,25 @@ export default function SearchPlanet() {
     );
   }
 
-  function renderFilterButton() {
+  function renderAddFilterButton() {
     return (
       <button
         type="button"
         data-testid="button-filter"
         onClick={ () => {
           setTableLoading(true);
-          setNumFilterOn(!numFilterOn);
-          setSaveFilterCollumn(!numFilterOn ? filterByNumericValues.column : '');
+          setNumFilterOn(true);
+          setSaveFilterCollumn(filterByNumericValues.column);
+          setFilterByNumericValues(
+            (prevState) => ({ ...prevState, column: 'population' }),
+          );
+          setFilterBackUp((prevState) => [...prevState, filterByNumericValues]);
           const ONE_SEC = 1000;
           setInterval(() => setTableLoading(false), ONE_SEC);
         } }
         className="ui black icon button"
       >
-        <i className={ `toggle ${numFilterOn ? 'on' : 'off'} icon` } />
+        <i className="plus square outline icon" />
       </button>
     );
   }
@@ -123,7 +129,7 @@ export default function SearchPlanet() {
           {renderColumnFilterDropdown()}
           {renderComparisonFilterSelect()}
           {renderValueFilterInput()}
-          {renderFilterButton()}
+          {renderAddFilterButton()}
         </div>
         <div className="ui large left pointing label black shake">
           Filtro Quantitativo
@@ -137,19 +143,31 @@ export default function SearchPlanet() {
   function filterFlag() {
     return (
       numFilterOn && (
-        <div>
-          <a
-            href="/"
-            className="ui black tag label"
-          >
-            {`${filterByNumericValues.column} 
-      ${filterByNumericValues.comparison} 
-      ${filterByNumericValues.value}`}
+        filterBackUp.map((filterElement) => (
+          <div key={ filterElement.column }>
+            <div
+              className="ui black tag label"
+              key={ filterElement.column }
+              data-testid="filter"
+            >
+              {`${filterElement.column} 
+              ${filterElement.comparison} 
+              ${filterElement.value}  `}
+              <button
+                type="button"
+                onClick={ () => setFilterBackUp(
+                  (prevState) => prevState
+                    .filter((filter) => filter.column !== filterElement.column),
+                ) }
+              >
+                X
 
-          </a>
-          <br />
-          <br />
-        </div>
+              </button>
+            </div>
+            <br />
+            <br />
+          </div>
+        ))
       )
     );
   }
