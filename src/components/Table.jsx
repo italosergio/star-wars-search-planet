@@ -29,7 +29,7 @@ function Table() {
   ];
 
   function nameFilter() {
-    const filtered = (planet) => planet.name.toLowerCase().includes(searchPlanetName);
+    const filtered = (planet) => planet.name.toLowerCase().includes(searchPlanetName.toLowerCase());
 
     return planets.filter((planet) => (
       searchPlanetName ? filtered(planet) : true
