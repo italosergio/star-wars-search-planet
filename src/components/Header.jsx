@@ -1,16 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../App.css';
 
 export default function Header() {
+  const [shakeConstant, setShakeConstant] = useState(false);
   useEffect(() => {
-    let myShakeTimeInterval = 0;
-    let myShakeTimeOut = 0;
-    const time = 2000;
+    let myShakeTimeInterval = null;
+    let myShakeTimeOut = null;
+    const TWO_SEC = 2000;
+    const TIME_OUT = 200;
     myShakeTimeInterval = setInterval(() => {
-      document.getElementById('credits').classList.add('shake-constant');
-      myShakeTimeOut = setTimeout(() => document.getElementById('credits')
-        .classList.remove('shake-constant'), 100);
-    }, time);
+      setShakeConstant(true);
+      myShakeTimeOut = setTimeout(() => setShakeConstant(false), TIME_OUT);
+    }, TWO_SEC);
     return () => {
       clearInterval(myShakeTimeOut);
       clearInterval(myShakeTimeInterval);
@@ -19,7 +20,7 @@ export default function Header() {
 
   return (
     <h1 className="inverted transparent ui center aligned icon header">
-      <a href="https://github.com/italosergio" className="sub header shake" id="credits">A Trybe Project by italosergio</a>
+      <a href="https://github.com/italosergio" className={ `sub header shake ${shakeConstant && 'shake-constant'}` }>A Trybe Project by italosergio</a>
       <i className="circular fighter jet icon rotate-icon" />
       <div className="header h1 shake-little">STAR WARS</div>
       <div className="sub header shake-little">Planet Search</div>
