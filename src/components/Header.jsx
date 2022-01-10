@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../App.css';
 
 export default function Header() {
-  function shakeControl() {
+  useEffect(() => {
+    let myShakeTimeInterval = 0;
+    let myShakeTimeOut = 0;
     const time = 2000;
-    setInterval(() => {
+    myShakeTimeInterval = setInterval(() => {
       document.getElementById('credits').classList.add('shake-constant');
-      setTimeout(() => document.getElementById('credits')
+      myShakeTimeOut = setTimeout(() => document.getElementById('credits')
         .classList.remove('shake-constant'), 100);
     }, time);
-  }
-  shakeControl();
+    return () => {
+      clearInterval(myShakeTimeOut);
+      clearInterval(myShakeTimeInterval);
+    };
+  }, []);
 
   return (
     <h1 className="inverted transparent ui center aligned icon header">
