@@ -24,11 +24,10 @@ function PlanetsProvider({ children }) {
   useEffect(() => {
     const urlApi = `https://swapi-trybe.herokuapp.com/api/planets/?page=${page}`;
     loadingOneSecond();
-    const fetchApi = async () => {
+    (async () => {
       const { results } = await fetch(urlApi).then((response) => response.json());
       setPlanets(results);
-    };
-    fetchApi();
+    })();
   }, [page]);
 
   const state = {
