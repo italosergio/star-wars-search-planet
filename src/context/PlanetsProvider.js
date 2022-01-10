@@ -8,6 +8,7 @@ function PlanetsProvider({ children }) {
   const [numFilterOn, setNumFilterOn] = useState(false);
   const [tableLoading, setTableLoading] = useState(true);
   const [page, setPage] = useState('1');
+  const [saveFilterCollumn, setSaveFilterCollumn] = useState('');
   const [filterByNumericValues, setFilterByNumericValues] = useState({
     column: 'population',
     comparison: 'maior que',
@@ -45,6 +46,8 @@ function PlanetsProvider({ children }) {
     page,
     filterBackUp,
     setFilterBackUp,
+    saveFilterCollumn,
+    setSaveFilterCollumn,
   };
 
   return (

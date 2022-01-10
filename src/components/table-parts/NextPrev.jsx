@@ -1,14 +1,10 @@
 import React, { useContext } from 'react';
-import PlanetsContext from '../context/PlanetsContext';
+import PlanetsContext from '../../context/PlanetsContext';
 
 export default function NextPrev() {
-  const {
-    setPage,
-    page,
-  } = useContext(PlanetsContext);
-
-  function renderPrevButton() {
-    return (
+  const { setPage, page } = useContext(PlanetsContext);
+  return (
+    <div className="ui mini inverted black buttons">
       <button
         type="button"
         className="ui labeled icon button"
@@ -22,11 +18,6 @@ export default function NextPrev() {
         <i className="left chevron icon" />
         Prev
       </button>
-    );
-  }
-
-  function renderNextButton() {
-    return (
       <button
         type="button"
         className="ui right labeled icon button"
@@ -40,13 +31,6 @@ export default function NextPrev() {
         Next
         <i className="right chevron icon" />
       </button>
-    );
-  }
-
-  return (
-    <div className="ui mini inverted black buttons">
-      {renderPrevButton()}
-      {renderNextButton()}
     </div>
   );
 }
