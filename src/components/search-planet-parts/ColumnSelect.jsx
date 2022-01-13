@@ -8,12 +8,12 @@ export default function ComparasionSelect() {
     saveFilterCollumn,
   } = useContext(PlanetContext);
 
-  const atributte = [
-    'population',
-    'orbital_period',
-    'diameter',
-    'rotation_period',
-    'surface_water',
+  const atributtes = [
+    { value: 'population', label: 'Population' },
+    { value: 'orbital_period', label: 'Orbital Period' },
+    { value: 'diameter', label: 'Diameter' },
+    { value: 'rotation_period', label: 'Rotation Period' },
+    { value: 'surface_water', label: 'Surface Water' },
   ];
 
   return (
@@ -26,9 +26,9 @@ export default function ComparasionSelect() {
       ) }
     >
       {
-        atributte.map((title) => (title !== saveFilterCollumn)
+        atributtes.map((attribute) => (attribute.value !== saveFilterCollumn)
           && (
-            <option key={ title }>{title}</option>
+            <option key={ attribute.value } value= {attribute.value}>{attribute.label}</option>
           ))
       }
     </select>

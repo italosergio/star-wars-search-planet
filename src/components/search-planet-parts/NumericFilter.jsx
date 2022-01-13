@@ -14,7 +14,7 @@ export default function NumericFilter() {
         <ButtonFilter />
       </div>
       <div className="ui large left pointing label black shake">
-        Filtro Quantitativo
+        Numeric Filter
       </div>
       <br />
       <br />

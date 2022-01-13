@@ -22,7 +22,7 @@ export default function NameFilter() {
         />
       </div>
       <div className="ui large left pointing label black shake">
-        Filtro Nome do Planeta
+        Name Filter
       </div>
       <br />
       <br />

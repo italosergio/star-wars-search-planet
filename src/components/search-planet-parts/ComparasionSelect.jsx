@@ -16,9 +16,9 @@ export default function ComparasionSelect() {
         (prevState) => ({ ...prevState, comparison: value }),
       ) }
     >
-      <option>maior que</option>
-      <option>igual a</option>
-      <option>menor que</option>
+      <option value="maior que">more than</option>
+      <option value="igual a">equal to</option>
+      <option value="menor que">less than</option>
     </select>
   );
 }
