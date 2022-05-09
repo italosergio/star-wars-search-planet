@@ -1,45 +1,19 @@
-## Termos e acordos
+# Project Starwars - Planets Search :milky_way:
+https://user-images.githubusercontent.com/87591265/148488227-e36555ac-c9ba-4ffc-ab8c-1b530db81acc.mp4
+# Como acessar
 
-Ao iniciar este projeto, você concorda com as diretrizes do Código de Ética e Conduta e do Manual da Pessoa Estudante da Trybe.
+1. Clone o repositório
+  * `git clone https://github.com/italosergio/star-wars-search-planet`
+  * Entre na pasta do repositório que você acabou de clonar:
+    * `cd star-wars-search-planet`
 
-# Boas vindas ao repositório do projeto Starwars Planets Search em context api e hooks!
+2. Instale as dependências e inicialize o projeto
+  * Instale as dependências:
+    * `npm install`
+  * Inicialize o projeto:
+    * `yarn start` ou `npm start`
 
-Você já usa o GitHub diariamente para desenvolver os exercícios, certo? Agora, para desenvolver os projetos, você deverá seguir as instruções a seguir. Fique atento a cada passo e, se tiver qualquer dúvida, nos envie por _Slack_! #vqv 🚀
-
-Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu projeto a partir deste repositório, utilizando uma branch específica e um _Pull Request_ para colocar seus códigos.
-
----
-
-# Sumário
-
-- [Habilidades](#habilidades)
-- [Entregáveis](#entregáveis)
-  - [O que deverá ser desenvolvido](#o-que-deverá-ser-desenvolvido)
-  - [Desenvolvimento](#desenvolvimento)
-  - [Data de entrega](#data-de-entrega)
-- [Instruções para entregar seu projeto:](#instruções-para-entregar-seu-projeto)
-  - [Antes de começar a desenvolver](#antes-de-começar-a-desenvolver)
-  - [Durante o desenvolvimento](#durante-o-desenvolvimento)
-- [Como desenvolver](#como-desenvolver)
-  - [Linter](#linter)
-- [Requisitos do projeto](#requisitos-do-projeto)
-  - [Lista de requisitos](#lista-de-requisitos)
-
-    `Requisitos obrigatórios:`
-    - [1 - Faça uma requisição para o endpoint /planets da API de Star Wars e preencha uma tabela com os dados retornados, com exceção dos da coluna residents](#1---faça-uma-requisição-para-o-endpoint-planets-da-api-de-star-wars-e-preencha-uma-tabela-com-os-dados-retornados-com-exceção-dos-da-coluna-residents)
-    - [2 - Filtre a tabela através de um texto, inserido num *campo de texto*, exibindo somente os planetas cujos nomes incluam o texto digitado](#2---filtre-a-tabela-através-de-um-texto-inserido-num-campo-de-texto-exibindo-somente-os-planetas-cujos-nomes-incluam-o-texto-digitado)
-    - [3 - Crie um filtro para valores numéricos](#3---crie-um-filtro-para-valores-numéricos)
-    - [4 - Não utilize filtros repetidos](#4---não-utilize-filtros-repetidos)
-    - [5 - Apague o filtro de valores numéricos e desfaça as filtragens dos dados da tabela ao clicar no ícone de X de um dos filtros](#5---apague-o-filtro-de-valores-numéricos-e-desfaça-as-filtragens-dos-dados-da-tabela-ao-clicar-no-ícone-de-x-de-um-dos-filtros)
-
-    `Requisitos bônus:`
-    - [6 - Ordene as colunas de forma ascendente ou descendente](#6---ordene-as-colunas-de-forma-ascendente-ou-descendente)
-- [Depois de terminar o desenvolvimento (opcional)](#depois-de-terminar-o-desenvolvimento-opcional)
-- [Revisando um pull request](#revisando-um-pull-request)
-- [Avisos Finais](#avisos-finais)
-
----
-
+3. Use os filtros de busca pra escolher seu planeta perfeito para explorar!
 # Habilidades
 
 Nesse projeto, você será capaz de:
@@ -50,330 +24,106 @@ Nesse projeto, você será capaz de:
 * Utilizar o _React Hook useEffect_;
 * Criar _React Hooks_ customizados.
 
----
-
-# Entregáveis
-
-## O que deverá ser desenvolvido
-
-Você vai desenvolver uma lista com filtros de planetas do universo de Star Wars usando **Context API e Hooks** para controlar os estados globais.
-
-**Segue link deploy do modelo do projeto:**
-
-https://trybe-starwars.surge.sh/
-
-### IMPORTANTE
-
-O modelo serve apenas para fins de ilustração. Para desenvolver o projeto, é mandatório que você siga os requisitos apontados no Readme.
-
----
-
-## Desenvolvimento
-
-Este repositório já contém um _template_ de uma aplicação React criado e configurado. Após clonar o projeto e instalar as dependências (mais sobre isso abaixo), você **poderá** criara a sua branch e iniciar o trabalho.
-
----
-
-## Data de entrega
-
-  - Projeto individual.
-
-  - Serão `2` dias de projeto.
-
-  - Data de entrega para avaliação final do projeto: `04/01/2022 - 14:00h`.
-
----
-
-# Instruções para entregar seu projeto:
-
-## Antes de começar a desenvolver
-
-1. Clone o repositório
-  * `git clone git@github.com:tryber/sd-015-a-project-starwars-planets-search.git`
-  * Entre na pasta do repositório que você acabou de clonar:
-    * `cd sd-015-a-project-starwars-planets-search`
-
-2. Instale as dependências e inicialize o projeto
-  * Instale as dependências:
-    * `npm install`
-  * Inicialize o projeto:
-    * `npm start` (uma nova página deve abrir no seu navegador com um texto simples)
-  * Verifique que os testes estão executando:
-    * `npm test` (os testes devem rodar e falhar)
-
-3. Crie uma branch a partir da branch `master`
-
-  * Verifique que você está na branch `master`
-    * Exemplo: `git branch`
-  * Se não estiver, mude para a branch `master`
-    * Exemplo: `git checkout master`
-  * Agora, crie uma branch onde você vai guardar os commits do seu projeto
-
----
-
-## Durante o desenvolvimento
-
-* Faça `commits` das alterações que você fizer no código regularmente
-
-* Lembre-se de sempre após um (ou alguns) `commits` atualizar o repositório remoto
-
-* Os comandos que você utilizará com mais frequência são:
-  1. `git status` _(para verificar o que está em vermelho - fora do stage - e o que está em verde - no stage)_
-  2. `git add` _(para adicionar arquivos ao stage do Git)_
-  3. `git commit` _(para criar um commit com os arquivos que estão no stage do Git)_
-  4. `git push -u nome-da-branch` _(para enviar o commit para o repositório remoto na primeira vez que fizer o `push` de uma nova branch)_
-  5. `git push` _(para enviar o commit para o repositório remoto após o passo anterior)_
-
----
-
-# Como desenvolver
-
-## Linter
-
-Para garantir a qualidade do seu código de forma a tê-lo mais legível, de mais fácil manutenção e seguindo as boas práticas de desenvolvimento nós utilizamos neste projeto o linter `ESLint` e o `Stylelint`. Para rodar o linter localmente no seu projeto, execute o comando abaixo:
-
-```bash
-npm run lint
-npm run lint:styles
-```
-
-⚠ **PULL REQUESTS COM ISSUES DE LINTER NÃO SERÃO AVALIADAS. ATENTE-SE PARA RESOLVÊ-LAS ANTES DE FINALIZAR O DESENVOLVIMENTO!** ⚠
-
----
-
-## Execução de testes unitários
-
-Neste projeto utilizamos a [React Testing Library (RTL)](https://testing-library.com/docs/react-testing-library/intro) para execução dos testes unitários.
-
-Em alguns dos [Requisitos do projeto](#requisitos-do-projeto) será pedido que você coloque o atributo `data-testid` nos elementos HTML. Isso acontece pois a RTL utiliza esse atributo para poder verificar a solução proposta.
-
-Por exemplo, se o requisito pedir "crie um botão e adicione o id de teste (ou `data-testid`) com o valor `my-action`", você poderá criar:
-
-```html
-<button data-testid="my-action"></button>
-```
-
-ou
-
-```html
-<a data-testid="my-action"><a/>
-```
-
-O atributo `data-testid="my-action"` servirá para a React Testing Library identificar o elemento e, dessa forma, será possível realizar os testes unitários focados no comportamento da aplicação.
-
-**Importante:** Em alguns requisitos, utilizamos o método `getByRole` para poder selecionar os elementos de forma semântica. Portanto atente-se às instruções de cada requisito. Por exemplo, se o requisito pedir explicitamente um button, você deverá utilizar exatamente esse elemento.
-
-Para verificar se seu projeto atende aos requisitos, você pode executar todos os testes unitários localmente, executando o comando:
-
-```bash
-npm test
-```
-
-### Dica: desativando testes
-
-Para rodar apenas um teste, basta a utilização da função `.only` após o describe. Com isso, será possível que apenas um requisito rode localmente e seja avaliado.
-
-![image](describe-only.png)
-![image](only-all-green.png)
-
-Caso queira avaliar apenas um tópico do requisito, você também pode usar o `.only` após o `it`.
-
-![image](it-only.png)
-![image](only-one-green.png)
-
-
-
-# Requisitos do projeto
-
-## Lista de requisitos
-
-### 1 - Faça uma requisição para o endpoint `/planets` da API de Star Wars e preencha uma tabela com os dados retornados, com exceção dos da coluna `residents`
-
-A tabela deve ser renderizada por um componente chamado `<Table />`. Os dados recebidos da API devem ser salvos num campo chamado `data` do contexto e é daí que a tabela deve lê-los. A requisição deve ser feita num componente separado do componente da tabela.
-
-A API a ser consultada está [nesse link](https://swapi-trybe.herokuapp.com/api/planets/). Ou seja, você deverá fazer um fetch para a URL `https://swapi-trybe.herokuapp.com/api/planets/`
-
-A tabela deve ter uma primeira linha com os headers e as demais com as informações de cada campo.
-
-O que será verificado:
-```
-- Realiza uma requisição para a API
-- Preenche a tabela com os dados retornados
-- Verifica se a tabela tem 13 colunas
-- Verifica se a tabela tem uma linha para cada planeta retornado
-```
-
-![image](req-1.png)
-
-
-### 2 - Filtre a tabela através de um texto, inserido num *campo de texto*, exibindo somente os planetas cujos nomes incluam o texto digitado
-
-Ele deve atualizar a tabela com os planetas que se encaixam no filtro à medida que o nome é digitado, sem ter que apertar um botão para efetuar a filtragem. Por exemplo, se digitar "Tatoo", o planeta "Tatooine" deve ser exibido. Você deve usar **Context API e Hooks** para fazer o gerenciamento do estado da aplicação e o texto digitado deve ser salvo num campo `{ filterByName: { name } }`. Por exemplo:
-
-```javascript
-{
-  filterByName: {
-    name: 'Tatoo'
-  }
-}
-```
-
-O campo de texto deve possuir a propriedade `data-testid='name-filter'` para que a avaliação automatizada funcione.
-
-O que será verificado:
-```
-- Renderiza o campo de texto para o filtro de nomes
-- Filtra os planetas que possuem a letra "o" no nome
-- Filtra planetas que possuem a letra "oo" no nome
-- Realiza vários filtros em sequência
-```
-
-![img](req-2.gif)
-
-### 3 - Crie um filtro para valores numéricos
-
-Ele funcionará com três seletores:
-
-  - O primeiro deve abrir um dropdown que permita a quem usa selecionar uma das seguintes colunas: `population`, `orbital_period`, `diameter`, `rotation_period` e `surface_water`. Deve ser uma tag `select` com a propriedade `data-testid='column-filter'`;
-  - O segundo deve determinar se a faixa de valor será `maior que`, `menor que` ou `igual a` o numero que virá a seguir. Uma tag `select` com a propriedade `data-testid='comparison-filter'`;
-  - O terceiro deve ser uma caixa de texto que só aceita números. Essa caixa deve ser uma tag `input` com a propriedade `data-testid='value-filter'`;
-  - Deve haver um botão para acionar o filtro, com a propriedade `data-testid='button-filter'`.
-
-A combinação desses três seletores deve filtrar os dados da tabela de acordo com a coluna correspondente e com os valores escolhidos. Por exemplo:
-  - A seleção `population | maior que | 100000` - Seleciona somente planetas com mais de 100000 habitantes.
-  - A seleção `diameter | menor que | 8000` - Seleciona somente planetas com diâmetro menor que 8000.
-
-Você deve usar **Context API e Hooks** para fazer o gerenciamento do estado da aplicação. No contexto, esses valores devem ser salvos em um outro campo `{ filterByNumericValues: [{ column, comparison, value }] }`. Por exemplo:
-
-```javascript
-{
-  filterByNumericValues: [
-    {
-      column: 'population',
-      comparison: 'maior que',
-      value: '100000',
-    }
-  ]
-}
-```
-
-O que será verificado:
-```
-- Renderiza o filtro de coluna
-- Renderiza o filtro de comparação
-- Renderiza o campo para o valor do filtro
-- Renderiza o botão para executar a filtragem
-- Verifica valores iniciais de cada campo
-- Filtra utilizando apenas o botão de filtrar
-- Filtra utilizando a comparação "menor que"
-- Filtra utilizando a comparação "maior que"
-- Filtra utilizando a comparação "igual a"
-```
-![img](req-3.gif)
-
-### 4 - Não utilize filtros repetidos
-
-Caso um filtro seja totalmente preenchido, um novo filtro de valores numéricos deve ser carregado. Este novo filtro não deve incluir quaisquer colunas que já tenham sido selecionadas em filtros de valores numéricos anteriores. Caso todas as colunas já tenham sido inclusas em filtros anteriores, não deve ser carregado um novo filtro. Você deve usar **Context API e Hooks** para fazer o gerenciamento do estado da aplicação.
-
-Por exemplo: O primeiro filtro tem as seguintes seleções: `population | maior que | 100000`. Um segundo filtro deve aparecer após essas seleções serem todas feitas e, no primeiro dropdown deste segundo filtro, a opção `population` deve estar ausente. Se no segundo filtro fosse selecionado `diameter | menor que | 8000`, o estado ficaria assim:
-
-```javascript
-{
-  filterByNumericValues: [
-    {
-      column: 'population',
-      comparison: 'maior que',
-      value: '100000',
-    },
-    {
-      column: 'diameter',
-      comparison: 'menor que',
-      value: '8000',
-    }
-  ]
-}
-```
-
-O que será verificado:
-```
-- Filtra por população e o remove das opções
-```
-
-![img](req-4.gif)
-
-### 5 - Apague o filtro de valores numéricos e desfaça as filtragens dos dados da tabela ao clicar no ícone de `X` de um dos filtros
-
-O `button` com o ícone de `x` deve existir em cada filtro de valores numéricos.
-
-A coluna que este filtro selecionava deve passar a ficar disponível nos dropdowns dos demais filtros já presentes na tela. Você deve usar **Context API e Hooks** para fazer o gerenciamento do estado da aplicação. Cada filtro deve possuir a propriedade `data-testid='filter'`, com um `button` em seu interior com o texto `X`.
-
-O que será verificado:
-```
-- Adiciona um filtro e verifica se a tabela foi atualizada com as informações filtradas, depois remove o filtro e verifica se os valores da tabela voltaram ao original.
-- Adiciona dois filtros e verifica se a tabela foi atualizada com as informações filtradas, depois remove os filtros e verifica se os valores da tabela voltaram ao original.
-```
-
-![img](req-5.gif)
-
-### Bônus
-
-### 6 - Ordene as colunas de forma ascendente ou descendente
-
-A informação acerca da ordenação das colunas deve ser armazenada em um novo campo `{ order: { column: 'population', sort: 'ASC'} }`, o campo column representa o nome da coluna a ordenar e a ordem representa a ordenação, sendo 'ASC' ascendente e 'DESC' descendente. Por padrão, a tabela começa ordenada pela coluna 'population' em ordem ascendente. Por exemplo:
-
-```javascript
-{
-  order: {
-    column: 'population',
-    sort: 'ASC',
-  }
-}
-```
-
-Essa ordenação deve ser feita via filtro: um dropdown selecionará a coluna a basear a ordenação e um par de radio buttons determinará se esta é ascendente ou descendente.
-
-As colunas selecionáveis através deste dropdown são: 'population', 'orbital_period', 'diameter', 'rotation_period' e 'surface_water'.
-
-O dropdown deve ser um elemento `select` com a propriedade `data-testid='column-sort'`, com as opções das colunas escolhíveis em seu interior. Deve haver também, dois `inputs` de tipo `radio`, com propriedades `data-testid='column-sort-input-asc'` e `data-testid='column-sort-input-desc'`, para definir o sentido da ordenação (com `value` sendo `ASC` ou `DESC`) e um botão para submeter a ordenação, com uma tag `button` e a propriedade `data-testid='column-sort-button'`.
-
-Adicione o atributo `data-testid` com o valor `planet-name` em todos os elementos da tabela que possuem o nome de um planeta.
-
-O que será verificado:
-```
-- Verifica ordenação inicial
-- Ordena os planetas do maior período orbital para o menor período orbital
-- Ordena os planetas do menor diametro para o maior diametro
-- Ordena os planetas do mais populoso para o menos populoso
-
-```
-![img](req-6.gif)
-
----
-
-# Depois de terminar o desenvolvimento (opcional)
-
-Para **"entregar"** seu projeto, siga os passos a seguir:
-
-* Vá até a página **DO SEU** _Pull Request_, adicione a label de _"code-review"_ e marque seus colegas
-  * No menu à direita, clique no _link_ **"Labels"** e escolha a _label_ **code-review**
-  * No menu à direita, clique no _link_ **"Assignees"** e escolha **o seu usuário**
-  * No menu à direita, clique no _link_ **"Reviewers"** e digite `students`, selecione o time `tryber/students-sd-00`
-
----
-
-# Revisando um pull request
-
-Use o conteúdo sobre [Code Review](https://course.betrybe.com/real-life-engineer/code-review/) para te ajudar a revisar os _Pull Requests_.
-
----
-
-# Avisos Finais
-
-Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência preenchendo o formulário. Leva menos de 3 minutos!
-
-Link: [Avaliação](https://be-trybe.typeform.com/to/ZTeR4IbH)
-
-O avaliador automático não necessariamente avalia seu projeto na ordem em que os requisitos aparecem no _README_. Isso acontece para deixar o processo de avaliação mais rápido. Então, não se assuste se isso acontecer, ok?
-
----
-
+# **_Desafios_**
+![Captura de tela de 2021-12-15 06-31-39](https://user-images.githubusercontent.com/87591265/146160874-6a9c1805-192f-46ea-be92-d5d6abb376ab.png)
+
+**Desafio 1** [✅] (https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/347cbd4f65eceb3f37f48525de309db70c9e75ca)
+_Faça uma requisição para o endpoint `/planets` da **API** de **Star Wars** e preencha uma tabela com os dados retornados, com exceção dos da coluna residents_
+  >- [x] - Realize uma requisição para a API
+  >- [x] - Preencha a tabela com os dados retornados
+  >- [x] - Verifique se a tabela tem 13 colunas
+  >- [x] - Verifique se a tabela tem uma linha para cada planeta retornado
+
+![Captura de tela de 2021-12-15 06-34-30](https://user-images.githubusercontent.com/87591265/146161242-f570f5ff-a1c2-4cc2-9520-47b0dc7b3a95.png)
+
+**Desafio 2** [✅] (https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/eb726ab01463ae24c514838d0866e11ad19884de)
+_Filtre a tabela através de um texto, inserido num campo de texto, exibindo somente os planetas cujos nomes incluam o texto digitado_
+  >- [x] Renderiza o campo de texto para o filtro de nomes
+  >- [x] Filtra os planetas que possuem a letra "o" no nome
+  >- [x] Filtra planetas que possuem a letra "oo" no nome
+  >- [x] Realiza vários filtros em sequência
+
+![Captura de tela de 2021-12-15 06-34-38](https://user-images.githubusercontent.com/87591265/146161299-17952b15-6b1f-4b74-9155-e25d86dfa498.png)
+
+**Desafio 3** [✅] (https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/c4e6e6e79656e67fb2c94f40211868f6b968dabc) (https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/f000331a43fc229e2005f2fac00f7dcad07449cb)
+_Crie um filtro para valores numéricos_
+  >- [x] Renderiza o filtro de coluna
+  >- [x] Renderiza o filtro de comparação
+  >- [x] Renderiza o campo para o valor do filtro
+  >- [x] Renderiza o botão para executar a filtragem
+  >- [x] Verifica valores iniciais de cada campo
+  >- [x] Filtra utilizando apenas o botão de filtrar
+  >- [x] Filtra utilizando a comparação "menor que"
+  >- [x] Filtra utilizando a comparação "maior que"
+  >- [x] Filtra utilizando a comparação "igual a"
+
+![Captura de tela de 2021-12-15 06-34-48](https://user-images.githubusercontent.com/87591265/146161332-eb503bca-adad-4407-804b-8d8b871a606c.png)
+
+**Desafio 4** [✅] (https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/cfa9e5e73a98e6b215302b7f814c50011843267a) (https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/5c556f8b4f30d69a6f8ff15d56ed917393633426)
+_Não utilize filtros repetidos_
+  >- [x] Filtra por população e o remove das opções
+  >- [x] Resolver filtro repetido para todos os casos 
+
+![Captura de tela de 2021-12-15 06-40-31](https://user-images.githubusercontent.com/87591265/146162104-052c3913-ac67-4e89-bc8a-cfb734a56683.png)
+
+**Desafio 5** [✅] (https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/1af81e8b7eb92bbe000c387c1687f59675f2ed94)
+_Apague o filtro de valores numéricos e desfaça as filtragens dos dados da tabela ao clicar no ícone de `X` de um dos filtros_
+  >- [x] Adiciona um filtro e verifica se a tabela foi atualizada com as informações filtradas, depois remove o filtro e verifica se os valores da tabela voltaram ao original.
+  >- [x] Adiciona dois filtros e verifica se a tabela foi atualizada com as informações filtradas, depois remove os filtros e verifica se os valores da tabela voltaram ao original.
+
+![Captura de tela de 2021-12-15 06-50-50](https://user-images.githubusercontent.com/87591265/146163823-d576080e-d13d-43e2-ba67-1e3cbd384bf9.png)
+
+[BONUS] **Desafio 6** [❌] (_no commit_)
+_Ordene as colunas de forma ascendente ou descendente_
+>- [ ] Verifica ordenação inicial
+>- [ ] Ordena os planetas do maior período orbital para o menor período orbital
+>- [ ] Ordena os planetas do menor diametro para o maior diametro
+>- [ ] Ordena os planetas do mais populoso para o menos populoso
+
+![Captura de tela de 2021-12-15 07-04-09](https://user-images.githubusercontent.com/87591265/146166122-aac06dee-266a-4695-b806-1f4a465a1e77.png)
+
+# **_Desenvolvimento_**
+
+- [x] Implement 🦾
+  > [{ conceive: 'semantic ui framework' }](https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/c4e6e6e79656e67fb2c94f40211868f6b968dabc)
+  [{ conceive: 'Loading' }](https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/c982c19959cdf507ee2befa7be18b8a7d6e4c9ff)
+  [{ conceive: 'Next/Prev page buttons' }](https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/dc7c7367ea233563fe3d8dab05c46f2fbc614d58)
+  [{ conceive: 'csshake framework' }](https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/5dc920b08508a945200d7d76ff69b035c8d2982e)
+
+- [x] Styles ✨
+  >[{ update: 'general styles' }](https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/c4e6e6e79656e67fb2c94f40211868f6b968dabc)
+  [{ change: 'styles' }](https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/3f6b0ae1f5f9e61946fe132e3d72abf7a9699c38)
+  [{ update: 'styles' }](https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/c22675b23ee7d4ccff814c5f27247c0352d61aac)
+  [{ create: 'filter flag',  update: 'search button style' }](https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/44482d9e8b46525c487e3d79bf944214ea5b1f7c)
+  [{ animation: 'header icon' }](https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/cf2ad1ade119635d7513aeba6bc1cfb2286e8df8)
+  [{ animation: 'shake titles and labels' }](https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/5dc920b08508a945200d7d76ff69b035c8d2982e)
+  [{ change: 'browser tab icon' }](https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/5dc920b08508a945200d7d76ff69b035c8d2982e)
+
+- [x] Refactor 🧬
+  >[{ update: 'home title' }](https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/73bfa3839169e79ac4dd63a9ed66d3d1c2db3dbd)
+[{ update: 'context structure' }](https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/499690f2e2a7fd1c155b7f53f748e5c8b4c75c51)
+[{ update: 'context structure' }](https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/7642cb33ffb5ab79b37b31c98f0d5a4f4651f6b1)
+[{ update: 'Table, SearchPlanet' }](https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/c4e6e6e79656e67fb2c94f40211868f6b968dabc)
+[{ update: 'Table', create: 'NextPrev' }](https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/0b182fefb864478d988654ef70306349c4ad93da)
+[{ update: 'Requirement 4' }](https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/5c556f8b4f30d69a6f8ff15d56ed917393633426)
+[{ upgrade: 'GENERAL REFACTOR'}](https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/86baab6397ef3aa51f18c2c6608c4f6c4f6ead05)
+[{ exchanges: 'functions by components' }](https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/f1c2a129b22dbaf37349a3ae671a524a29fd11b1)
+
+- [x] Clean up code  🧹
+  >[{ changes: 'SearchPlanet.jsx e Table.jsx' }](https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/3b3f72d95916b8c4b6e788e76ee98997ebf8ebab)
+[{ changes: 'Index.html' }](https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/5dc920b08508a945200d7d76ff69b035c8d2982e)
+[{ changes: 'GENERAL CLEAN UP CODE'}](https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/86baab6397ef3aa51f18c2c6608c4f6c4f6ead05)
+[{ changes: 'components return' }](https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/512407d7f96c4c1fa03db55c3fba550f19b23584)
+
+- [x] Code Review 🔎
+  - [x] @caiojlima 
+  - [x] @fernandosenacruz 
+  - [x] @leonardodfelix
+    >[{ codeReview: 'useEffect & clearInterval' }](https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/cecaa5ebfcac02ff23eed1d1bdc6ff4b609b487f)
+    [{ codeReview: 'kill getElementById' }](https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/18623f79277e9a4f20fcc7c009b11d6d2bc559d7)
+    [{ codeReview: 'componentization' }](https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/f1c2a129b22dbaf37349a3ae671a524a29fd11b1)
+    [{ codeReview: 'requisition function refactored' }](https://github.com/tryber/sd-015-a-project-starwars-planets-search/pull/53/commits/7f536a86b70ecda80c92e6d385053c642ef1d870)
+ 
+
+> ![giphy](https://user-images.githubusercontent.com/87591265/146157482-a2fd807c-52ef-4956-90be-d86f1576ccd9.gif)
+_"FINALIZAR O PROJETO, VOCÊ DEVE.."_  🖖🏼👽
