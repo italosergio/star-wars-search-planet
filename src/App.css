@@ -1,5 +1,7 @@
 body {
-  background-image: url('https://www.pixelstalk.net/wp-content/uploads/2016/06/Star-Wars-Wallpaper-HD.jpg');
+  background-image: url('images/Star-Wars-Wallpaper-HD.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 .h1 {
