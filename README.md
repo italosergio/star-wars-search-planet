@@ -73,15 +73,6 @@ _Apague o filtro de valores numéricos e desfaça as filtragens dos dados da tab
 
 ![Captura de tela de 2021-12-15 06-50-50](https://user-images.githubusercontent.com/87591265/146163823-d576080e-d13d-43e2-ba67-1e3cbd384bf9.png)
 
-[BONUS] **Desafio 6** [❌] (_no commit_)
-_Ordene as colunas de forma ascendente ou descendente_
->- [ ] Verifica ordenação inicial
->- [ ] Ordena os planetas do maior período orbital para o menor período orbital
->- [ ] Ordena os planetas do menor diametro para o maior diametro
->- [ ] Ordena os planetas do mais populoso para o menos populoso
-
-![Captura de tela de 2021-12-15 07-04-09](https://user-images.githubusercontent.com/87591265/146166122-aac06dee-266a-4695-b806-1f4a465a1e77.png)
-
 # **_Desenvolvimento_**
 
 - [x] Implement 🦾
